@@ -18,20 +18,13 @@ class Solution {
                     long sum=(long)nums[i]+nums[j]+nums[k]+nums[l];
                     
                     if(sum==target){
-                        List<Integer> data= new ArrayList<>();
-                        data.add(nums[i]);
-                        data.add(nums[j]);
-                        data.add(nums[k]);
-                        data.add(nums[l]);
-                        if(pair.add(data)){
-                            res.add(data);
-                        }
+                        res.add(Arrays.asList(nums[i],nums[j],nums[k],
+                        nums[l]));
+
+                        while(k<l && nums[k]==nums[k+1]) k++;
+                        while(k<l && nums[l]==nums[l-1]) l--;
                         k++;
                         l--;
-
-                        if(k<l && nums[k]==nums[k-1]){
-                             k++;
-                         }
 
                     }else if(sum>target){
                         l--;
